@@ -24,18 +24,27 @@ local scene = composer.newScene( sceneName )
  
 -- The local variables for this scene
 local companyLogo
-local companyLogoScrollSpeed = 5
-local jungleSounds = audio.loadSound("Sounds/animals144.mp3")
-local jungleSoundsChannel
-
+local companyLogoScrollSpeed = 6
+local timeWarpSound = audio.loadSound("Sounds/TimeWarp.mp3")
+local timeWarpSoundsChannel
+local firstFly
+local secondFly
+local firstFlyScrollSpeed = 13
+local secondFlyScrollSpeed = -13
 --------------------------------------------------------------------------------------------
 -- LOCAL FUNCTIONS
 --------------------------------------------------------------------------------------------
 
 -- The function that moves the companyLogo across the screen
 local function movecompanyLogo()
-    companyLogo.x = companyLogo.x + companyLogoScrollSpeed
-    
+
+companyLogo.rotation = companyLogo.rotation + companyLogoScrollSpeed
+companyLogo.width = companyLogo.width + companyLogoScrollSpeed
+companyLogo.height = companyLogo.height + companyLogoScrollSpeed
+companyLogo.alpha = companyLogo.alpha - 0.01
+firstFly.x = firstFly.x + firstFlyScrollSpeed
+secondFly.x = secondFly.x + secondFlyScrollSpeed
+
 end
 
 -- The function that will go to the main menu 
@@ -56,12 +65,19 @@ function scene:create( event )
     -- set the background to be black
     display.setDefault("background", 0, 0, 0)
 
-    -- Insert the companyLogo image
-    companyLogo = display.newImageRect("Images/companyLogo.png", 200, 200)
+    -- Insert the companyLogo image and fly images
+    companyLogo = display.newImageRect("Images/CompanyLogo.png", 200, 200)
+    secondFly = display.newImageRect ("Images/SecondFly.png", 200, 115)
+    firstFly = display.newImageRect ("Images/Fly.png", 300, 150)
+    companyLogo.alpha = 1
 
-    -- set the initial x and y position of the companyLogo
-    companyLogo.x = 100
+    -- set the initial x and y position of the companyLogo and the fly images
+    companyLogo.x = display.contentWidth/2
     companyLogo.y = display.contentHeight/2
+    firstFly.x = 0 
+    firstFly.y = 700
+    secondFly.x = 1000
+    secondFly.y = 100
 
     -- Insert objects into the scene group in order to ONLY be associated with this scene
     sceneGroup:insert( companyLogo )
@@ -89,7 +105,7 @@ function scene:show( event )
 
     elseif ( phase == "did" ) then
         -- start the splash screen music
-        jungleSoundsChannel = audio.play(jungleSounds )
+        timeWarpSoundsChannel = audio.play(timeWarpSound)
 
         -- Call the movecompanyLogo function as soon as we enter the frame.
         Runtime:addEventListener("enterFrame", movecompanyLogo)
@@ -123,7 +139,7 @@ function scene:hide( event )
     elseif ( phase == "did" ) then
         
         -- stop the jungle sounds channel for this screen
-        audio.stop(jungleSoundsChannel)
+        audio.stop(timeWarpSoundsChannel)
     end
 
 end --function scene:hide( event )
