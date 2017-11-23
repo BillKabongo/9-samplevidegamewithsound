@@ -1,10 +1,10 @@
 -----------------------------------------------------------------------------------------
 --
 -- splash_screen.lua
--- Created by: Your Name
--- Date: Month Day, Year
+-- Created by: Bill Kabongo
+-- Date: November 22nd 2017
 -- Description: This is the splash screen of the game. It displays the 
--- company logo that...
+-- company logo that rotates while having 2 flies fly across the screen.
 -----------------------------------------------------------------------------------------
 
 -- Use Composer Library
@@ -49,7 +49,8 @@ end
 
 -- The function that will go to the main menu 
 local function gotoMainMenu()
-    composer.gotoScene( "main_menu" )
+    composer.gotoScene( "main_menu", {effect = "slideDown", time = 600})
+
 end
 
 -----------------------------------------------------------------------------------------

@@ -1,8 +1,8 @@
 -----------------------------------------------------------------------------------------
 --
 -- main.lua
--- Created by: Your Name
--- Date: Month Day, Year
+-- Created by: Bill Kabongo
+-- Date: November 22nd, 2017
 -- Description: This calls the splash screen of the app to load itself.
 -----------------------------------------------------------------------------------------
 

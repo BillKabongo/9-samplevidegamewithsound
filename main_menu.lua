@@ -1,8 +1,8 @@
 -----------------------------------------------------------------------------------------
 --
 -- main_menu.lua
--- Created by: Your Name
--- Date: Month Day, Year
+-- Created by: Bill Kabongo
+-- Date: November 22nd 2017
 -- Description: This is the main menu, displaying the credits, instructions & play buttons.
 -----------------------------------------------------------------------------------------
 
@@ -53,8 +53,8 @@ local function Level1ScreenTransition( )
 end    
 
 -- INSERT LOCAL FUNCTION DEFINITION THAT GOES TO INSTRUCTIONS SCREEN 
-local function InstructionsScreenTransition( )
-    composer.gotoScene( "instructions_screen", {effect = "fromTop", time = 1000})
+local function InstructionsTransition( )
+    composer.gotoScene( "instructions_screen", {effect = "fromTop", time = 500})
 end
 -----------------------------------------------------------------------------------------
 -- GLOBAL SCENE FUNCTIONS

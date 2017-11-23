@@ -1,9 +1,9 @@
 -----------------------------------------------------------------------------------------
 --
 -- instructions_screen.lua
--- Created by: Your Name
+-- Created by: Bill Kabongo
 -- Special thanks to Wal Wal for helping in the design of this framework.
--- Date: Month Day, Year
+-- Date: November 22nd, 2017
 -- Description: This is the instructions page, displaying a back button to the main menu.
 -----------------------------------------------------------------------------------------
 
@@ -35,7 +35,7 @@ local backButton
 
 -- Creating Transitioning Function back to main menu
 local function BackTransition( )
-    composer.gotoScene( "main_menu", {effect = "zoomOutInFadeRotate", time = 500})
+    composer.gotoScene( "main_menu", {effect = "fromBottom", time = 500})
 end
 
 
